@@ -8,10 +8,11 @@ var bio ={
         "email" : "redean6@gmail.com",
         "github":"redean6",
         "location" : "Northern Colorado",
+
 },
     "welcome message":"Welcome to my page",
     "skills" : [
-        "Programmer", "Teacher", "Web Designer"
+         "Teacher", "Programmer", "Web Designer"
         ],
     "bioPic":"images/me.jpg"
 
@@ -66,12 +67,21 @@ var projects = {
     ]
 }
 
-
 var formattedName=HTMLheaderName.replace("%data%",bio.name);
 $("#header").append(formattedName);
 
 var formattedImage=HTMLbioPic.replace("%data%",bio.bioPic);
 $("#header").append(formattedImage);
+
+function displaycontacts(){
+for(info in bio.contacts){
+    var formattedContact = HTMLcontactGeneric.replace("%contact%", info).replace("%data%",bio.contacts[info]);
+    $("#topContacts").append(formattedContact);
+}
+}
+
+displaycontacts();
+
 
 
 
@@ -87,6 +97,7 @@ if (bio.skills.length > 0){
     formattedSkill= HTMLskills.replace("%data%", bio.skills[2]);
     $("#skills").append(formattedSkill);
 }
+
 
 
 function displaywork(){
