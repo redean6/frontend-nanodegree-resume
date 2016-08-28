@@ -7,7 +7,7 @@ var bio ={
         "mobile" :"970-388-5573",
         "email" : "redean6@gmail.com",
         "github":"redean6",
-        "location" : "Northern Colorado",
+        "location" : "Loveland, Colorado",
 
 },
     "welcome message":"Welcome to my page",
@@ -36,18 +36,20 @@ var education = {
             "name": "Colorado State University",
             "city": "Fort Collins, Colorado",
             "degree":"BS",
-            "majors": ["Mathematics", "Education"],
+            "major": "Mathematics",
             "dates": "2006-2010",
             "url": "http://www.colostate.edu/"
-        },
+        }
+    ]
+}
+
+var online = {
+    "onlineclasses": [
         {
-            "name":"Udacity",
-            "city":"Online Course",
-            "degree": "Nanodegree",
-            "major":"Front-End Web Developer",
+            "school":"Udacity",
+            "title":"Front-End Web Developer",
             "dates": 2016,
             "url": "http://www.udacity.com"
-
         }
     ]
 }
@@ -77,6 +79,7 @@ function displaycontacts(){
 for(info in bio.contacts){
     var formattedContact = HTMLcontactGeneric.replace("%contact%", info).replace("%data%",bio.contacts[info]);
     $("#topContacts").append(formattedContact);
+    $("#footerContacts").append(formattedContact);
 }
 }
 
@@ -98,7 +101,42 @@ if (bio.skills.length > 0){
     $("#skills").append(formattedSkill);
 }
 
+education.display= function(){
+    for (school in education.schools){
+        $("#education").append(HTMLschoolStart);
 
+        var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].city);
+        var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+        var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        $(".education-entry:last").append(formattedName);
+        $(".education-entry:last").append(formattedLocation);
+        $(".education-entry:last").append(formattedDegree);
+        $(".education-entry:last").append(formattedMajor);
+        $(".education-entry:last").append(formattedDates);
+    }
+}
+
+education.display();
+
+online.display= function(){
+    for (onlineclass in online.onlineclasses){
+        $("#education").append(HTMLonlineClasses);
+        var formattedSchool = HTMLonlineSchool.replace("%data%", online.onlineclasses[onlineclass].school);
+        var formattedTitle = HTMLonlineTitle.replace("%data%", online.onlineclasses[onlineclass].title);
+        var formattedDates = HTMLonlineDates.replace("%data%", online.onlineclasses[onlineclass].dates);
+        var formattedURL = HTMLonlineURL.replace("%data%", online.onlineclasses[onlineclass].url);
+        $(".education-entry:last").append(formattedSchool);
+        $(".education-entry:last").append(formattedTitle);
+        $(".education-entry:last").append(formattedDates);
+        $(".education-entry:last").append(formattedURL);
+
+    }
+}
+
+
+online.display();
 
 function displaywork(){
 for(job in work.jobs){
