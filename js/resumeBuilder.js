@@ -10,9 +10,9 @@ var bio ={
         "location" : "Loveland, Colorado",
 
 },
-    "welcome message":"Welcome to my page",
+    "welcomemsg":"Welcome to my page, it is a pleasure to meet you.",
     "skills" : [
-         "Teacher", "Programmer", "Web Designer"
+         "Teacher", "Web Designer", "Programmer"
         ],
     "bioPic":"images/me.jpg"
 
@@ -59,12 +59,14 @@ var projects = {
         {
             "title": "Animal Trading Card",
             "dates": "Summer 2016",
-            "description": "Using HTML and CSS I created a pretty looking trading card for a howler monkey."
+            "description": "Using HTML and CSS I created a pretty looking trading card for a howler monkey.",
+            "image":"images/howlermonkey.jpg"
         },
         {
             "title" : "Portfolio",
             "dates" : "Summer 2016",
-            "description": "Using HTML and flexbox, I created a pretty Portfolio website."
+            "description": "Using HTML and flexbox, I created a pretty Portfolio website.",
+            "image": "images/fry.jpg"
         }
     ]
 }
@@ -72,21 +74,24 @@ var projects = {
 var formattedName=HTMLheaderName.replace("%data%",bio.name);
 $("#header").append(formattedName);
 
-var formattedImage=HTMLbioPic.replace("%data%",bio.bioPic);
-$("#header").append(formattedImage);
+var formattedRole =HTMLheaderRole.replace("%data%",bio.role);
+$("#header").append(formattedRole);
 
 function displaycontacts(){
 for(info in bio.contacts){
     var formattedContact = HTMLcontactGeneric.replace("%contact%", info).replace("%data%",bio.contacts[info]);
-    $("#topContacts").append(formattedContact);
+    $("#header").append(formattedContact);
     $("#footerContacts").append(formattedContact);
 }
 }
 
 displaycontacts();
 
+var formattedImage=HTMLbioPic.replace("%data%",bio.bioPic);
+$("#header").append(formattedImage);
 
-
+var formattedMessage=HTMLwelcomeMsg.replace("%data%",bio.welcomemsg);
+$("#header").append(formattedMessage);
 
 if (bio.skills.length > 0){
     $("#header").append(HTMLskillsStart);
@@ -111,24 +116,27 @@ education.display= function(){
         var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
         var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
         $(".education-entry:last").append(formattedName);
-        $(".education-entry:last").append(formattedLocation);
         $(".education-entry:last").append(formattedDegree);
-        $(".education-entry:last").append(formattedMajor);
         $(".education-entry:last").append(formattedDates);
+        $(".education-entry:last").append(formattedLocation);
+        $(".education-entry:last").append(formattedMajor);
+
     }
 }
 
 education.display();
 
+$("#education").append(HTMLonlineClasses);
+
 online.display= function(){
     for (onlineclass in online.onlineclasses){
-        $("#education").append(HTMLonlineClasses);
+        $("#education").append(HTMLschoolStart);
         var formattedSchool = HTMLonlineSchool.replace("%data%", online.onlineclasses[onlineclass].school);
         var formattedTitle = HTMLonlineTitle.replace("%data%", online.onlineclasses[onlineclass].title);
         var formattedDates = HTMLonlineDates.replace("%data%", online.onlineclasses[onlineclass].dates);
         var formattedURL = HTMLonlineURL.replace("%data%", online.onlineclasses[onlineclass].url);
-        $(".education-entry:last").append(formattedSchool);
         $(".education-entry:last").append(formattedTitle);
+        $(".education-entry:last").append(formattedSchool);
         $(".education-entry:last").append(formattedDates);
         $(".education-entry:last").append(formattedURL);
 
@@ -167,7 +175,8 @@ projects.display= function() {
     $(".project-entry:last").append(formattedDates);
     var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
     $(".project-entry:last").append(formattedDescription);
-//to get images in here see encapsulating functions.
+    var formattedPicture = HTMLprojectImage.replace("%data%", projects.projects[project].image);
+    $(".project-entry:last").append(formattedPicture);
     }
 }
 
