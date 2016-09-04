@@ -2,7 +2,7 @@
 
 var bio ={
     "name" : "Richard Dean",
-    "role": "Web Developer",
+    "role": "Web Developer/ Mathematician",
     "contacts":{
         "mobile" :"970-388-5573",
         "email" : "redean6@gmail.com",
@@ -12,7 +12,7 @@ var bio ={
 },
     "welcomemsg":"Welcome to my page, it is a pleasure to meet you.",
     "skills" : [
-         "Teacher", "Web Designer", "Programmer"
+         "Mathematics Teacher", "Front-End Developer", "Programmer"
         ],
     "bioPic":"images/me.jpg"
 
@@ -26,6 +26,13 @@ var work = {
         "dates": "August 2011-Present",
         "location": "Loveland, Colorado",
         "description": "Teaches geometry, pre-calculus, and statistics. Tech Commitee Memember."
+    },
+    {
+        "employer": "Antigua Special Care Moving",
+        "title": "Mover",
+        "dates": "December 2010-May 2011",
+        "location": "Abilene, Texas",
+        "description": "Packed and moved anything from furniture to pianos."
     }
     ]
 }
@@ -34,7 +41,7 @@ var education = {
     "schools": [
         {
             "name": "Colorado State University",
-            "city": "Fort Collins, Colorado",
+            "location": "Fort Collins, Colorado",
             "degree":"BS",
             "major": "Mathematics",
             "dates": "2006-2010",
@@ -66,7 +73,7 @@ var projects = {
             "title" : "Portfolio",
             "dates" : "Summer 2016",
             "description": "Using HTML and flexbox, I created a pretty Portfolio website.",
-            "image": "images/fry.jpg"
+            "image": "images/portfolio.jpg"
         }
     ]
 }
