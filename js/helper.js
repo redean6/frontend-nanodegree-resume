@@ -43,7 +43,7 @@ var HTMLonlineDates = '<div class="date-text">%data%</div>';
 var HTMLonlineURL = '<br><a href="#">%data%</a>';
 
 var internationalizeButton = '<button>Internationalize</button>';
-var googleMap = '<div id="mapDiv"></div>';
+var googleMap = '<div id="map"></div>';
 
 
 $(document).ready(function() {
@@ -81,7 +81,7 @@ function initializeMap() {
     disableDefaultUI: true
   };
 
-  map = new google.maps.Map(document.querySelector('#mapDiv'), mapOptions);
+  map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
   function locationFinder() {
 
