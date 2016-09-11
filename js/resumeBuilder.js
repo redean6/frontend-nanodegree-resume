@@ -80,10 +80,12 @@ bio.display = function(){
     $("#header").append(formattedName);
     var formattedRole =HTMLheaderRole.replace("%data%",bio.role);
     $("#header").append(formattedRole);
-    for (var info in bio.contacts){
-        var formattedContact = HTMLcontactGeneric.replace("%contact%", info).replace("%data%",bio.contacts[info]);
-        $("#topContacts").append(formattedContact);
-        $("#footerContacts").append(formattedContact);
+    if (bio.contacts.length > 0){
+        bio.contacts.forEach(function(info){
+            var formattedContact = HTMLcontactGeneric.replace("%contact%", info).replace("%data%",bio.contacts[info]);
+            $("#topContacts").append(formattedContact);
+            $("#footerContacts").append(formattedContact);
+        });
     }
     var formattedImage=HTMLbioPic.replace("%data%",bio.biopic);
     $("#header").append(formattedImage);
@@ -166,10 +168,9 @@ projects.display= function() {
             $(".project-entry:last").append(formattedDates);
             var formattedDescription = HTMLprojectDescription.replace("%data%", project.description);
             $(".project-entry:last").append(formattedDescription);
-            var formattedPicture = HTMLprojectImage.replace("%data%", project.images);
             if (project.images.length > 0){
                 project.images.forEach(function(image) {
-                var formattedPicture = HTMLprojectImage.replace("%data%",project.images);
+                var formattedPicture = HTMLprojectImage.replace("%data%",image);
                 $(".project-entry:last").append(formattedPicture);
                 });
         }
