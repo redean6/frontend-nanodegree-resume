@@ -80,13 +80,12 @@ bio.display = function(){
     $("#header").append(formattedName);
     var formattedRole =HTMLheaderRole.replace("%data%",bio.role);
     $("#header").append(formattedRole);
-    if (bio.contacts.length > 0){
-        bio.contacts.forEach(function(info){
-            var formattedContact = HTMLcontactGeneric.replace("%contact%", info).replace("%data%",bio.contacts[info]);
-            $("#topContacts").append(formattedContact);
-            $("#footerContacts").append(formattedContact);
-        });
-    }
+    var formattedMobile=HTMLmobile.replace("%data%",bio.contacts.mobile);
+    var formattedEmail=HTMLemail.replace("%data%",bio.contacts.email);
+    var formattedGitHub=HTMLgithub.replace("%data%",bio.contacts.github);
+    var formattedLocation=HTMLlocation.replace("%data%",bio.contacts.location);
+    $("#topContacts").append(formattedMobile, formattedEmail, formattedGitHub, formattedLocation);
+    $("#footerContacts").append(formattedMobile,formattedEmail, formattedGitHub, formattedLocation);
     var formattedImage=HTMLbioPic.replace("%data%",bio.biopic);
     $("#header").append(formattedImage);
     var formattedMessage=HTMLwelcomeMsg.replace("%data%",bio.welcomeMessage);
